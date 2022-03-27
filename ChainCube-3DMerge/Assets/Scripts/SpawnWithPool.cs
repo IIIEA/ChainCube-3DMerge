@@ -11,14 +11,17 @@ public class SpawnWithPool : MonoBehaviour
     [SerializeField] private GameObject _cubePrefab;
     [SerializeField] private GameObject _swipeDetectorObject;
     [SerializeField] private Transform _spawnPoint;
-    [SerializeField] private ObjectDependencyInjector[] _cubeDependencies;
+    [SerializeField] private ObjectDependencyInjector _cubeDependencies;
 
     private ISwipe _swipeDetector;
     private Queue<GameObject> _cubesQueue = new Queue<GameObject>();
     private Coroutine _spawnRoutine;
+    private WaitForSeconds _delay;
 
     private void Start()
     {
+        _delay = new WaitForSeconds(_spawnDelay);
+
         InitializeCubesQueue();
         _swipeDetector = _swipeDetectorObject.GetComponent<ISwipe>();
         _swipeDetector.OnSwipeEnd += OnSwipeEnd;
@@ -33,7 +36,7 @@ public class SpawnWithPool : MonoBehaviour
             foreach (var cube in _cubesQueue)
             {
                 var cubeComponent = cube.GetComponent<CollisionMergePointsHolder>();
-                cubeComponent.OnCubeDestroyed -= OnCubeDestroyed;
+                cubeComponent.OnCubeDestroyed -= AddCubeToQueue;
             }
         }
     }
@@ -74,14 +77,14 @@ public class SpawnWithPool : MonoBehaviour
         {
             cube.gameObject.SetActive(false);
             _cubesQueue.Enqueue(cube);
-            cubeComponent.OnCubeDestroyed += OnCubeDestroyed;
+            cubeComponent.OnCubeDestroyed += AddCubeToQueue;
         }
     }
 
     private IEnumerator SpawnWithDelay()
     {
         yield return null;
-        yield return new WaitForSeconds(_spawnDelay);
+        yield return _delay;
         var cube = _cubesQueue.Dequeue();
         cube.gameObject.SetActive(true);
         InjectCube(cube.gameObject);
@@ -90,15 +93,7 @@ public class SpawnWithPool : MonoBehaviour
 
     private void InjectCube(GameObject cube)
     {
-        foreach (var dependency in _cubeDependencies)
-        {
-            dependency.GameObject = cube;
-        }
-    }
-
-    private void OnCubeDestroyed()
-    {
-        AddCubeToQueue();
+        _cubeDependencies.GameObject = cube;
     }
 }
 

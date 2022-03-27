@@ -27,7 +27,6 @@ public class MouseControl : MonoBehaviour, ISwipe
         if (!_isSwipe)
         {
             _isSwipe = true;
-            OnSwipeStart?.Invoke(Input.mousePosition - _lastPosition);
         }
 
         OnSwipe?.Invoke(Input.mousePosition - _lastPosition);

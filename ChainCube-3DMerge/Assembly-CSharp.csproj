@@ -72,6 +72,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\CubeComponents\PointsHolder.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
+    <Compile Include="Assets\Scripts\CubeComponents\CollisionMergePointsHolder.cs" />
     <Compile Include="Assets\Scripts\SwipeDetector.cs" />
     <Compile Include="Assets\Scripts\CubeComponents\RandomPointsSetter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Assets\Scripts\Interfaces\IMovableObjectHandler.cs" />
     <Compile Include="Assets\Scripts\ObjectDependencyInjector.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\CubeComponents\PointsHolderCollisionDetector.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -102,8 +104,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ISwipe.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Scripts\CubeComponents\CollisionMergePointsHolder.cs" />
-    <Compile Include="Assets\Scripts\CubeComponents\PointsHolderCollisionDetector.cs" />
+    <Compile Include="Assets\Scripts\CubeComponents\CollisionImpulse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

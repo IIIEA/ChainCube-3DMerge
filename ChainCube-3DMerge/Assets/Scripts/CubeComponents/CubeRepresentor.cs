@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,14 @@ public class CubeRepresentor : MonoBehaviour
 
     public void OnDestroy()
     {
-        _pointsHolder.onPointsChanged -= SetPoints;
+        try
+        {
+            _pointsHolder.onPointsChanged -= SetPoints;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("NullReference");
+        }
     }
 
     private void SetPoints(long points)

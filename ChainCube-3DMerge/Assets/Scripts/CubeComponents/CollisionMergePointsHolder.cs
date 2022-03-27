@@ -30,6 +30,13 @@ public class CollisionMergePointsHolder : MonoBehaviour
 
     private void OnDestroy()
     {
-        _detector.OnCollisionContinue -= OnPointsContainerCollision;
+        try
+        {
+            _detector.OnCollisionContinue -= OnPointsContainerCollision;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("NullReference collision");
+        }
     }
 }

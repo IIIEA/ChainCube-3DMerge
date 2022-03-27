@@ -9,7 +9,7 @@ public class YForceMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
 
     private void Start()
     {
-        _swipeDetector = GetComponent<MouseControl>();
+        _swipeDetector = GetComponent<ISwipe>();
         Subscribe();
     }
 

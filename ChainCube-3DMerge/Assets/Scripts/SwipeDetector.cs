@@ -7,31 +7,42 @@ public class SwipeDetector : MonoBehaviour, ISwipe
     public event Action<Vector2> OnSwipe;
     public event Action<Vector2> OnSwipeEnd;
 
-    private bool _isSwipe;
-    private Vector2 _lastPosition = new Vector2();
+    private bool _isSwipeEnded = false;
+    private Vector3 _lastPosition = new Vector2();
 
     private void Update()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        Swipe();
+    }
+
+    private void Swipe()
+    {
+        if(Input.touchCount > 0)
         {
-            if (_isSwipe)
+            Touch touch = Input.GetTouch(0);
+
+            switch (touch.phase)
             {
-                _isSwipe = false;
-                OnSwipeEnd?.Invoke(_lastPosition);
+                case TouchPhase.Ended:
+                    _isSwipeEnded = true;
+                    break;
+                case TouchPhase.Began:
+                    _isSwipeEnded = false;
+                    _lastPosition = touch.position;
+                    break;
+                case TouchPhase.Moved:
+                    OnSwipe?.Invoke((Vector3)touch.position - _lastPosition);
+                    _lastPosition = touch.position;
+                    break;
             }
-
-            _lastPosition = Input.GetTouch(0).position;
-            return;
         }
 
-        if (!_isSwipe)
+        if(_isSwipeEnded == true)
         {
-            _isSwipe = true;
-            OnSwipeStart?.Invoke(Input.GetTouch(0).position - _lastPosition);
+            _isSwipeEnded = false;
+            OnSwipeEnd?.Invoke(_lastPosition);
         }
-
-        OnSwipe?.Invoke(Input.GetTouch(0).position - _lastPosition);
-        _lastPosition = Input.GetTouch(0).position;
     }
 }
+
 
