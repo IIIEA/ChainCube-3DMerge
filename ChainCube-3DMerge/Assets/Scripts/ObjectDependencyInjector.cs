@@ -9,7 +9,7 @@ public class ObjectDependencyInjector : MonoBehaviour
     public GameObject GameObject
     {
         get => _gameObject;
-        private set
+        set
         {
             if (_gameObject == value)
                 return;

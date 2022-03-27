@@ -4,32 +4,63 @@ using UnityEngine;
 
 public class SpawnWithPool : MonoBehaviour
 {
-    [SerializeField] private float _spawnDelay;
+    [SerializeField] private int _cubesQueueCapacity = 20;
     [SerializeField] private bool _autoQueueGrow = true;
-    [Min(0)]
-    [SerializeField] private int _cubesPoolCapacity = 20;
-    [Space]
+    [SerializeField] private float _spawnDelay = 0.3f;
+    [Header("Components links"), Space]
+    [SerializeField] private GameObject _cubePrefab;
     [SerializeField] private GameObject _swipeDetectorObject;
-    [SerializeField] private Transform _spawnPosition;
-    [SerializeField] private CubeRepresentor _prefabCube;
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private ObjectDependencyInjector[] _cubeDependencies;
 
-    private Queue<CubeRepresentor> _cubesQueue = new Queue<CubeRepresentor>();
+    private ISwipe _swipeDetector;
+    private Queue<GameObject> _cubesQueue = new Queue<GameObject>();
+    private Coroutine _spawnRoutine;
 
-    public static SpawnWithPool Instance;
-
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-
         InitializeCubesQueue();
+        _swipeDetector = _swipeDetectorObject.GetComponent<ISwipe>();
+        _swipeDetector.OnSwipeEnd += OnSwipeEnd;
+    }
+
+    private void OnDestroy()
+    {
+        _swipeDetector.OnSwipeEnd -= OnSwipeEnd;
+
+        if (_cubesQueue.Count != 0)
+        {
+            foreach (var cube in _cubesQueue)
+            {
+                var cubeComponent = cube.GetComponent<CollisionMergePointsHolder>();
+                cubeComponent.OnCubeDestroyed -= OnCubeDestroyed;
+            }
+        }
+    }
+
+    private void OnSwipeEnd(Vector2 delta)
+    {
+        if (_spawnRoutine == null)
+        {
+            if (_cubesQueue.Count == 0)
+            {
+                if (_autoQueueGrow)
+                {
+                    _cubesQueueCapacity++;
+                    AddCubeToQueue();
+                }
+                else
+                {
+                    Debug.LogError("Pool is empty");
+                }
+            }
+            _spawnRoutine = StartCoroutine(SpawnWithDelay());
+        }
     }
 
     private void InitializeCubesQueue()
     {
-        for (int i = 0; i < _cubesPoolCapacity; i++)
+        for (int i = 0; i < _cubesQueueCapacity; i++)
         {
             AddCubeToQueue();
         }
@@ -37,46 +68,37 @@ public class SpawnWithPool : MonoBehaviour
 
     private void AddCubeToQueue()
     {
-        var cube = Instantiate(_prefabCube, _spawnPosition.position, Quaternion.identity, transform).GetComponent<CubeRepresentor>();
+        var cube = Instantiate(_cubePrefab, _spawnPoint.position, Quaternion.identity, this.transform);
 
-        cube.gameObject.SetActive(false);
-        _cubesQueue.Enqueue(cube);
-    }
-
-    public CubeRepresentor Spawn(int number, Vector3 positin)
-    {
-        if (_cubesQueue.Count == 0)
+        if (cube.TryGetComponent<CollisionMergePointsHolder>(out CollisionMergePointsHolder cubeComponent))
         {
-            if (_autoQueueGrow)
-            {
-                _cubesPoolCapacity++;
-                AddCubeToQueue();
-            }
-            else
-            {
-                return null;
-            }
+            cube.gameObject.SetActive(false);
+            _cubesQueue.Enqueue(cube);
+            cubeComponent.OnCubeDestroyed += OnCubeDestroyed;
         }
-
-        CubeRepresentor cube = _cubesQueue.Dequeue();
-        cube.transform.position = positin;
-
-       // cube.SetNumbe(number);
-        //cube.SetColor(GetColor(number));
-        cube.gameObject.SetActive(true);
-
-        return cube;
     }
 
-    public void DestroyCube(CubeRepresentor cube)
+    private IEnumerator SpawnWithDelay()
     {
-       //cube.CubeRigidbody.velocity = Vector3.zero;
-       // cube.CubeRigidbody.angularVelocity = Vector3.zero;
-        cube.transform.rotation = Quaternion.identity;
-       // cube.IsMainCube = false;
-        cube.gameObject.SetActive(false);
-        _cubesQueue.Enqueue(cube);
+        yield return null;
+        yield return new WaitForSeconds(_spawnDelay);
+        var cube = _cubesQueue.Dequeue();
+        cube.gameObject.SetActive(true);
+        InjectCube(cube.gameObject);
+        _spawnRoutine = null;
+    }
+
+    private void InjectCube(GameObject cube)
+    {
+        foreach (var dependency in _cubeDependencies)
+        {
+            dependency.GameObject = cube;
+        }
+    }
+
+    private void OnCubeDestroyed()
+    {
+        AddCubeToQueue();
     }
 }
-
 

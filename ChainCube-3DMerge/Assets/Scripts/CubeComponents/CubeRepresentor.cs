@@ -17,7 +17,7 @@ public class CubeRepresentor : MonoBehaviour
         _pointsHolder.onPointsChanged += SetPoints;
     }
 
-    private void OnDisable()
+    public void OnDestroy()
     {
         _pointsHolder.onPointsChanged -= SetPoints;
     }

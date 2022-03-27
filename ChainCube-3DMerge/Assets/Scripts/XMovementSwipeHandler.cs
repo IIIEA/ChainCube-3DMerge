@@ -5,7 +5,7 @@ public class XMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
 {
     [SerializeField] private Transform _leftBorder;
     [SerializeField] private Transform _rightBorder;
-    [Range(0.5f, 1.5f)]
+    [Header("Slowdown coefficient on swipe"), Range(0.5f, 1.5f)]
     [SerializeField] private float _normalizedCoefficient = 1.0f;
 
     private GameObject _movableObject;
@@ -14,29 +14,15 @@ public class XMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
     private void Start()
     {
         _swipeDetector = GetComponent<ISwipe>();
-        Subscribe();
-    }
-
-    private void OnDestroy()
-    {
-        Unsubscribe();
-    }
-
-    private void Subscribe()
-    {
-        if (_swipeDetector == null)
-            throw new NullReferenceException("Вы забыли прикрепить SwipeDetector!");
 
         _swipeDetector.OnSwipe += OnSwipe;
         _swipeDetector.OnSwipeEnd += OnSwipeEnd;
     }
 
-    private void Unsubscribe()
+    private void OnDestroy()
     {
-        if (_swipeDetector == null)
-            return;
-
         _swipeDetector.OnSwipe -= OnSwipe;
+        _swipeDetector.OnSwipeEnd -= OnSwipeEnd;
     }
 
     private void OnSwipe(Vector2 delta)
@@ -55,10 +41,17 @@ public class XMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
 
         _movableObject.transform.position = new Vector3(currentPos.x + offset, currentPos.y, currentPos.z);
 
-        if (_movableObject.transform.position.x > _rightBorder.position.x)
-            _movableObject.transform.position = _rightBorder.transform.position;
+        _movableObject.transform.position = SetPosition(_movableObject.transform.position);
+    }
+
+    private Vector3 SetPosition(Vector3 currentPositionX)
+    {
+        if (currentPositionX.x > _rightBorder.position.x)
+            currentPositionX = new Vector3(_rightBorder.transform.position.x, currentPositionX.y, currentPositionX.z);
         else if (_movableObject.transform.position.x < _leftBorder.position.x)
-            _movableObject.transform.position = _leftBorder.transform.position;
+            currentPositionX = new Vector3(_leftBorder.transform.position.x, currentPositionX.y, currentPositionX.z);
+
+        return currentPositionX;
     }
 
     private void OnSwipeEnd(Vector2 delta)
