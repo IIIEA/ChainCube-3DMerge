@@ -9,28 +9,19 @@ public class YForceMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
 
     private void Start()
     {
-        _swipeDetector = GetComponent<ISwipe>();
-        Subscribe();
+        if (TryGetComponent<ISwipe>(out ISwipe iSwipe))
+        {
+            _swipeDetector = iSwipe;
+            _swipeDetector.OnSwipeEnd += OnSwipeEnd;
+        }
+        else
+        {
+            Debug.LogError("ISwipe component in null");
+        }
     }
 
     private void OnDestroy()
     {
-        Unsubscribe();
-    }
-
-    private void Subscribe()
-    {
-        if (_swipeDetector == null)
-            return;
-
-        _swipeDetector.OnSwipeEnd += OnSwipeEnd;
-    }
-
-    private void Unsubscribe()
-    {
-        if (_swipeDetector == null)
-            return;
-
         _swipeDetector.OnSwipeEnd -= OnSwipeEnd;
     }
 

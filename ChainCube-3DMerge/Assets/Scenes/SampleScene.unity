@@ -398,6 +398,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328856198}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &489146678
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1177581783179502, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_Name
+      value: Explosion FX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4400378270267780, guid: 14769bb65a40388458490bb51507af7b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14769bb65a40388458490bb51507af7b, type: 3}
 --- !u!1 &618641101
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,7 +887,7 @@ GameObject:
   - component: {fileID: 1352221766}
   - component: {fileID: 1352221765}
   - component: {fileID: 1352221769}
-  - component: {fileID: 1352221768}
+  - component: {fileID: 1352221770}
   m_Layer: 0
   m_Name: '[SwipeHolder]'
   m_TagString: Untagged
@@ -880,18 +937,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1352221768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352221764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24f753826153a1e42a9b35a5d3180062, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1352221769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,6 +952,18 @@ MonoBehaviour:
   _leftBorder: {fileID: 1350167956}
   _rightBorder: {fileID: 899734332}
   _normalizedCoefficient: 1
+--- !u!114 &1352221770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352221764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c3966b65bd22a4684e7c5955e1a77d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1363198209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cubesQueueCapacity: 5
   _autoQueueGrow: 1
-  _spawnDelay: 0.3
+  _spawnDelay: 0.4
   _cubePrefab: {fileID: 5864509695571254078, guid: 41735fb87e196bc4b9eaf78e35b8d11b, type: 3}
   _swipeDetectorObject: {fileID: 1352221764}
   _spawnPoint: {fileID: 248938258}

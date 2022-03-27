@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(PointsHolder), typeof(Rigidbody), typeof(PointsHolderCollisionDetector))]
 public class CollisionImpulse : MonoBehaviour
 {
     [Min(0)]
     [SerializeField] private float _impulseForse;
+    [Min(0)]
+    [SerializeField] private float _startHightOnCillision;
 
     private PointsHolder _pointsContainer;
     private Rigidbody _rigidbody;
@@ -32,10 +35,19 @@ public class CollisionImpulse : MonoBehaviour
         }
     }
 
-    private void OnCollisionStart(PointsHolder collision)
+    private void OnCollisionStart(PointsHolder pointsHolder, Collision collision)
     {
-        if (collision.Points == _pointsContainer.Points)
-            _rigidbody.AddForce(new Vector3(0, .3f, 1f) * _impulseForse, ForceMode.Impulse);
+        if (pointsHolder.Points == _pointsContainer.Points)
+        {
+            float randomValue = Random.Range(-20f, 20f);
+
+            Vector3 randomDirection = Vector3.one * randomValue;
+            Vector3 contactPoint = collision.contacts[0].point;
+
+            transform.position = contactPoint + Vector3.up * _startHightOnCillision;
+            _rigidbody.AddForce(Vector3.up * _impulseForse, ForceMode.Impulse);
+            _rigidbody.AddTorque(randomDirection);
+        }
     }
 }
 

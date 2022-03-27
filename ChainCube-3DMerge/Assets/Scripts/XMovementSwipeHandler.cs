@@ -13,10 +13,17 @@ public class XMovementSwipeHandler : MonoBehaviour, IMovableObjectHandler
 
     private void Start()
     {
-        _swipeDetector = GetComponent<ISwipe>();
+        if (TryGetComponent<ISwipe>(out ISwipe iSwipe))
+        {
+            _swipeDetector = iSwipe;
 
-        _swipeDetector.OnSwipe += OnSwipe;
-        _swipeDetector.OnSwipeEnd += OnSwipeEnd;
+            _swipeDetector.OnSwipe += OnSwipe;
+            _swipeDetector.OnSwipeEnd += OnSwipeEnd;
+        }
+        else
+        {
+            Debug.LogError("ISwipe component in null");
+        }
     }
 
     private void OnDestroy()

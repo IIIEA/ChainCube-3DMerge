@@ -11,6 +11,8 @@ public class CubeRepresentor : MonoBehaviour
 
     private PointsHolder _pointsHolder;
 
+    public Color CubeColor { get => _renderer.material.color; }
+
     private void Start()
     {
         _pointsHolder = GetComponent<PointsHolder>();

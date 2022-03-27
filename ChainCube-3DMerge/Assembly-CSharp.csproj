@@ -65,7 +65,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\ColorData.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\Scripts\MouseControl.cs" />
+    <Compile Include="Assets\Scripts\SwipeMouseDetector.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDependency.cs" />
     <Compile Include="Assets\Scripts\YForceMovementSwipeHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
@@ -73,8 +73,9 @@
     <Compile Include="Assets\Scripts\CubeComponents\PointsHolder.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Scripts\CubeComponents\CollisionMergePointsHolder.cs" />
-    <Compile Include="Assets\Scripts\SwipeDetector.cs" />
+    <Compile Include="Assets\Scripts\SwipeTouchDetector.cs" />
     <Compile Include="Assets\Scripts\CubeComponents\RandomPointsSetter.cs" />
+    <Compile Include="Assets\Scripts\CubeComponents\CollisionImpulse.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\Cube.cs" />
     <Compile Include="Assets\Scripts\CubeComponents\CubeRepresentor.cs" />
@@ -104,7 +105,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ISwipe.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\Scripts\CubeComponents\CollisionImpulse.cs" />
+    <Compile Include="Assets\Scripts\FXEffect.cs" />
+    <Compile Include="Assets\Scripts\CubeComponents\FXEffectHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
