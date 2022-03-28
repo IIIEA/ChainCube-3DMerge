@@ -22,7 +22,13 @@ public class CollisionMergePointsHolder : MonoBehaviour
     {
         if (pointsHolder.Points == _pointsContainer.Points)
         {
+            var position = transform.position;
+
             _pointsContainer.Points *= 2;
+
+            Score.Instance.SpawnPopUpText(_pointsContainer.Points, position);
+            Score.Instance.UpdateScore(_pointsContainer.Points);
+
             Destroy(pointsHolder.gameObject);
             OnCubeDestroyed?.Invoke();
         }
