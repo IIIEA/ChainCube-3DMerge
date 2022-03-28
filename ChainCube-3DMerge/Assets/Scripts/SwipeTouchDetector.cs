@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class SwipeTouchDetector : MonoBehaviour, ISwipe
 {
-    public event Action<Vector2> OnSwipe;
-    public event Action<Vector2> OnSwipeEnd;
+    [SerializeField] private InterAd _interAd;
 
+    private int _countEndedTouches;
     private bool _isSwipeEnded = false;
     private Vector3 _lastPosition = new Vector2();
+
+    public event Action<Vector2> OnSwipe;
+    public event Action<Vector2> OnSwipeEnd;
 
     private void Update()
     {
@@ -39,6 +42,14 @@ public class SwipeTouchDetector : MonoBehaviour, ISwipe
         if(_isSwipeEnded == true)
         {
             _isSwipeEnded = false;
+            _countEndedTouches++;
+
+            if (_countEndedTouches == UnityEngine.Random.Range(10, 20))
+            {
+                _countEndedTouches = 0;
+                _interAd.ShowAd();
+            }
+
             OnSwipeEnd?.Invoke(_lastPosition);
         }
     }
