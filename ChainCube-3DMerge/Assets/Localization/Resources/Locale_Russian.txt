@@ -1,4 +1,0 @@
-﻿{
-	"MAINMENU_BUTTON":"Играть",
-	"MAINMENU_BUTTON_LANGUAGE":"Русский",
-}

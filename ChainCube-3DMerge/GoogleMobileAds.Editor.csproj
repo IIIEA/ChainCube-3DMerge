@@ -53,16 +53,16 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
-    <Compile Include="Assets\GoogleAds\GoogleMobileAds\Editor\BuildPreProcessor.cs" />
-    <Compile Include="Assets\GoogleAds\GoogleMobileAds\Editor\PListProcessor.cs" />
-    <Compile Include="Assets\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
-    <Compile Include="Assets\GoogleAds\GoogleMobileAds\Editor\ManifestProcessor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettings.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\BuildPreProcessor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\PListProcessor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSettingsEditor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Editor\ManifestProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsSKAdNetworkItems.xml" />
-    <None Include="Assets\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAds.Editor.asmdef" />
-    <None Include="Assets\GoogleAds\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
+    <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsSKAdNetworkItems.xml" />
+    <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAds.Editor.asmdef" />
+    <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -320,32 +320,20 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Google.IOSResolver_v1.2.165">
-      <HintPath>Assets\GoogleAds\ExternalDependencyManager\Editor\Google.IOSResolver_v1.2.165.dll</HintPath>
-    </Reference>
     <Reference Include="GoogleMobileAds.Core">
-      <HintPath>Assets\GoogleAds\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\GoogleAds\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMobileAds.Common">
-      <HintPath>Assets\GoogleAds\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver_v1.2.165">
-      <HintPath>Assets\GoogleAds\ExternalDependencyManager\Editor\Google.JarResolver_v1.2.165.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.PackageManagerResolver_v1.2.165">
-      <HintPath>Assets\GoogleAds\ExternalDependencyManager\Editor\Google.PackageManagerResolver_v1.2.165.dll</HintPath>
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Core.dll</HintPath>
     </Reference>
     <Reference Include="GoogleMobileAds">
-      <HintPath>Assets\GoogleAds\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.dll</HintPath>
     </Reference>
     <Reference Include="GoogleMobileAds.Unity">
-      <HintPath>Assets\GoogleAds\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Google.VersionHandlerImpl_v1.2.165">
-      <HintPath>Assets\GoogleAds\ExternalDependencyManager\Editor\Google.VersionHandlerImpl_v1.2.165.dll</HintPath>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\ExternalDependencyManager\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMobileAds.Common">
+      <HintPath>Assets\GoogleMobileAds\GoogleMobileAds.Common.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

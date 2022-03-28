@@ -35,7 +35,7 @@ public class SwipeMouseDetector : MonoBehaviour, ISwipe
             return;
         }
 
-        if (!_isSwipe)
+        if (_isSwipe == false)
         {
             _isSwipe = true;
         }

@@ -1,18 +1,31 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AdInitialize
+    - BannerAd
     - CollisionImpulse
     - CollisionMergePointsHolder
     - ColorBundleData
     - CubeRepresentor
+    - FXEffect
+    - FXEffectHolder
+    - InterAd
     - ObjectDependencyInjector
     - PointsHolder
     - PointsHolderCollisionDetector
     - RandomPointsSetter
+    - SceneLoader
+    - Score
+    - SelfDestroyer
     - SpawnWithPool
-    - SwipeDetector
+    - SwipeMouseDetector
+    - TextMover
     - XMovementSwipeHandler
     - YForceMovementSwipeHandler
+    GoogleMobileAds.Common.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
+    GoogleMobileAds.Editor.dll:
+    - GoogleMobileAds.Editor.GoogleMobileAdsSettings
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -22,6 +35,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshPro
+    - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -29,8 +43,13 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene.unity:
+    Assets/Scenes/Level.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -49,13 +68,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 49
-      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -65,46 +84,60 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 111
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1500}
+      Script: {instanceID: 12578}
     - Class: 114
-      Script: {instanceID: 1746}
+      Script: {instanceID: 12598}
     - Class: 114
-      Script: {instanceID: 1898}
+      Script: {instanceID: 12662}
     - Class: 114
-      Script: {instanceID: 2028}
+      Script: {instanceID: 12858}
     - Class: 114
-      Script: {instanceID: 2442}
+      Script: {instanceID: 12918}
     - Class: 114
-      Script: {instanceID: 2624}
+      Script: {instanceID: 13034}
     - Class: 114
-      Script: {instanceID: 2802}
+      Script: {instanceID: 13374}
     - Class: 114
-      Script: {instanceID: 2856}
+      Script: {instanceID: 13486}
     - Class: 114
-      Script: {instanceID: 2946}
+      Script: {instanceID: 13498}
     - Class: 114
-      Script: {instanceID: 2948}
+      Script: {instanceID: 13608}
     - Class: 114
-      Script: {instanceID: 2978}
+      Script: {instanceID: 13654}
     - Class: 114
-      Script: {instanceID: 3000}
+      Script: {instanceID: 13728}
     - Class: 114
-      Script: {instanceID: 3102}
+      Script: {instanceID: 13794}
     - Class: 114
-      Script: {instanceID: 3306}
+      Script: {instanceID: 13810}
     - Class: 114
-      Script: {instanceID: 3504}
+      Script: {instanceID: 14000}
     - Class: 114
-      Script: {instanceID: 3760}
+      Script: {instanceID: 14056}
     - Class: 114
-      Script: {instanceID: 3872}
+      Script: {instanceID: 14148}
     - Class: 114
-      Script: {instanceID: 3898}
+      Script: {instanceID: 14182}
     - Class: 114
-      Script: {instanceID: 4014}
+      Script: {instanceID: 14204}
     - Class: 114
-      Script: {instanceID: 4144}
+      Script: {instanceID: 14270}
+    - Class: 114
+      Script: {instanceID: 14306}
+    - Class: 114
+      Script: {instanceID: 14524}
+    - Class: 114
+      Script: {instanceID: 14724}
+    - Class: 114
+      Script: {instanceID: 15124}
+    - Class: 114
+      Script: {instanceID: 15242}
+    - Class: 114
+      Script: {instanceID: 15502}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -115,9 +148,88 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/MainMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1498}
+    - Class: 114
+      Script: {instanceID: 12572}
+    - Class: 114
+      Script: {instanceID: 12618}
+    - Class: 114
+      Script: {instanceID: 12806}
+    - Class: 114
+      Script: {instanceID: 12858}
+    - Class: 114
+      Script: {instanceID: 13164}
+    - Class: 114
+      Script: {instanceID: 13174}
+    - Class: 114
+      Script: {instanceID: 13486}
+    - Class: 114
+      Script: {instanceID: 13608}
+    - Class: 114
+      Script: {instanceID: 13794}
+    - Class: 114
+      Script: {instanceID: 13940}
+    - Class: 114
+      Script: {instanceID: 14000}
+    - Class: 114
+      Script: {instanceID: 14092}
+    - Class: 114
+      Script: {instanceID: 14984}
+    - Class: 114
+      Script: {instanceID: 15098}
+    - Class: 114
+      Script: {instanceID: 15374}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
@@ -128,6 +240,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SceneLoader
+  - hash:
+      serializedVersion: 2
+      Hash: 783c169f10005fa7514bca9688fac145
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: InterAd
   - hash:
       serializedVersion: 2
       Hash: eb07f15c606b0095103a13542714b80d
@@ -142,10 +266,40 @@ ScriptsOnlyBuild:
     className: AnimationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: bc8d0afeebc008570ffede5254e873af
+    assemblyName: GoogleMobileAds.Editor.dll
+    namespaceName: GoogleMobileAds.Editor
+    className: GoogleMobileAdsSettings
+  - hash:
+      serializedVersion: 2
       Hash: 77aaaaa51f7a8d8ff333a879741e47d2
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FXEffect
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.Unity.dll
+    namespaceName: 
+    className: ButtonBehaviour
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.Unity.dll
+    namespaceName: 
+    className: Countdown
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.Unity.dll
+    namespaceName: 
+    className: DummyAdBehaviour
   - hash:
       serializedVersion: 2
       Hash: 62fef86270a167c41a606cfca1ecc156
@@ -202,6 +356,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdInitialize
+  - hash:
+      serializedVersion: 2
       Hash: e6f0efd0e20669d577e9d21526b3d3f9
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -218,6 +378,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: SimpleScript
+  - hash:
+      serializedVersion: 2
+      Hash: 8f6aa63a45d00433efb2ccc412d6f477
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SelfDestroyer
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -256,10 +422,22 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PopUpText
+  - hash:
+      serializedVersion: 2
       Hash: c1d728126ff1918728036c59106d32b2
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BannerAd
   - hash:
       serializedVersion: 2
       Hash: 4f60ff347d4efee4ef8cc7f627735018
@@ -272,6 +450,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: 3cf156985df62fac63708d6bed3583bf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TextMover
   - hash:
       serializedVersion: 2
       Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
@@ -328,10 +512,10 @@ ScriptsOnlyBuild:
     className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d5dfe0ed50abdc215b5a1ac1650bdae3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: MouseControl
+    className: SwipeMouseDetector
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -380,6 +564,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: Benchmark03
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: GoogleMobileAds.Common.dll
+    namespaceName: GoogleMobileAds.Common
+    className: MobileAdsEventExecutor
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -448,10 +638,10 @@ ScriptsOnlyBuild:
     className: CollisionMergePointsHolder
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d5dfe0ed50abdc215b5a1ac1650bdae3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SwipeDetector
+    className: SwipeTouchDetector
   - hash:
       serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
@@ -466,7 +656,7 @@ ScriptsOnlyBuild:
     className: RandomPointsSetter
   - hash:
       serializedVersion: 2
-      Hash: 920c565b6d363bdd95bb2a741f5441ff
+      Hash: 96c217e267df4ce331c5e44d5148f971
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CollisionImpulse
@@ -487,7 +677,7 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Cube
+    className: FXEffectHolder
   - hash:
       serializedVersion: 2
       Hash: 5b050bdfe4a57c0d2d48ac92d24a72ec
@@ -778,6 +968,12 @@ ScriptsOnlyBuild:
     className: TextConsoleSimulator
   - hash:
       serializedVersion: 2
+      Hash: 15dc9632dece9dbbf759071a90dca7ec
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Score
+  - hash:
+      serializedVersion: 2
       Hash: e63944317d2f5958e31963668bb29158
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
@@ -832,5 +1028,6 @@ ScriptsOnlyBuild:
     className: TMP_TextEventCheck
   platform: 13
   scenePathNames:
-  - Assets/Scenes/SampleScene.unity
+  - Assets/Scenes/MainMenu.unity
+  - Assets/Scenes/Level.unity
   playerPath: C:/Users/Asus/Desktop/CubeCharge.apk
