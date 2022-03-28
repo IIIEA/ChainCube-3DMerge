@@ -1,0 +1,4 @@
+{
+	"MAINMENU_BUTTON":"Play",
+	"MAINMENU_BUTTON_LANGUAGE":"English",
+}
