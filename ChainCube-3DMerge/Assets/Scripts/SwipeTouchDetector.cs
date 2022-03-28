@@ -6,11 +6,17 @@ public class SwipeTouchDetector : MonoBehaviour, ISwipe
     [SerializeField] private InterAd _interAd;
 
     private int _countEndedTouches;
+    private int _counTouchesToAd;
     private bool _isSwipeEnded = false;
     private Vector3 _lastPosition = new Vector2();
 
     public event Action<Vector2> OnSwipe;
     public event Action<Vector2> OnSwipeEnd;
+
+    private void Start()
+    {
+        _counTouchesToAd = UnityEngine.Random.Range(10, 20);
+    }
 
     private void Update()
     {
@@ -42,13 +48,9 @@ public class SwipeTouchDetector : MonoBehaviour, ISwipe
         if(_isSwipeEnded == true)
         {
             _isSwipeEnded = false;
-            _countEndedTouches++;
 
-            if (_countEndedTouches == UnityEngine.Random.Range(10, 20))
-            {
-                _countEndedTouches = 0;
-                _interAd.ShowAd();
-            }
+            _countEndedTouches++;
+            _interAd.ShowAd(ref _countEndedTouches, ref _counTouchesToAd);
 
             OnSwipeEnd?.Invoke(_lastPosition);
         }

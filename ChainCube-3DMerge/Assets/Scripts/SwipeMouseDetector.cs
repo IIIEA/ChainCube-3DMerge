@@ -25,14 +25,8 @@ public class SwipeMouseDetector : MonoBehaviour, ISwipe
             if (_isSwipe)
             {
                 _countEndedTouches++;
-                Debug.Log(_countEndedTouches + " " + _counTouchesToAd);
-                if (_countEndedTouches == _counTouchesToAd)
-                {
-                    _countEndedTouches = 0;
-                    _counTouchesToAd = UnityEngine.Random.Range(10, 20);
-                    _interAd.ShowAd();
-                }
-
+                _interAd.ShowAd(ref _countEndedTouches, ref _counTouchesToAd);
+                    
                 _isSwipe = false;
                 OnSwipeEnd?.Invoke(_lastPosition);
             }
